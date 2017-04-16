@@ -1,6 +1,6 @@
 # Coding Challenge Repo
 
-Nate Bhurinat W. (nate.bwangsut@gmail.com)
+Nate Bhurinat W. (nate.bwangsut@gmail.com)  
 [@natebwangsut] https://github.com/natebwangsut
 
 # Palentir Coding Challenge
