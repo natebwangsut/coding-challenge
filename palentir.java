@@ -85,25 +85,26 @@ public class palentir {
                 action = token[2];
                 amount = Integer.parseInt(token[3]);
 
+                // Early exit if the person is already flagged
+                if(flagged.contains(person)) { continue; }
+
+                // Create new ArrayList object if null
                 trades.putIfAbsent(person, new ArrayList<Trade>());
-
-                Trade tr = new Trade(day, action, amount, price);
-                //System.out.println(tr);
-
                 trades.get(person).add(new Trade(day, action, amount, price));
-                //System.out.println(trades.get(person));
             } else {
                 price = Integer.parseInt(token[1]);
-                //System.out.println(price);
             }
 
+            // Iterate over person's transaction
             Iterator<String> keys = trades.keySet().iterator();
             while (keys.hasNext()) {
                 person = keys.next();
-                // System.out.println(person);
 
+                // For each trade
                 Iterator<Trade> trade = trades.get(person).iterator();
                 while (trade.hasNext()) {
+
+                    // Remove trade if less than minimum time
                     Trade t = trade.next();
                     if (day - t.day >= DAY_THRESHOLD) {
                         trade.remove();
@@ -111,7 +112,6 @@ public class palentir {
                     }
 
                     amount = 0;
-                    // System.out.println(t);
                     if (t.action.equals("BUY")) {
                         amount = (price - t.price) * t.amount;
                     } else {
@@ -126,8 +126,8 @@ public class palentir {
             }
         }
 
+        // Output formatting
         ArrayList<String> returnStrings = new ArrayList<String>();
-
         Iterator<String> retDays = insider.iterator();
         Iterator<String> retPers = flagged.iterator();
 
@@ -149,10 +149,6 @@ public class palentir {
             this.action = action;
             this.amount = amount;
             this.price = price;
-        }
-
-        public String toString() {
-            return String.valueOf(day) + "|" + action + "|" + String.valueOf(amount) + "|" + String.valueOf(price);
         }
     }
 }

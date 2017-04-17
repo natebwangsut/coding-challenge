@@ -112,5 +112,5 @@ feed2 = """0|20
 16|Will|BUY|100000
 17|25"""
 
-print(catching_insider(feed1))
-print(catching_insider(feed2))
+print catching_insider(feed1)
+print catching_insider(feed2)
