@@ -70,7 +70,6 @@ def catching_insider(datafeed):
                     flagged.append(person)
                     result.append(str(transaction[0]) + "|" + str(person))
 
-
         #print(traders)
 
     return result
@@ -113,5 +112,5 @@ feed2 = """0|20
 16|Will|BUY|100000
 17|25"""
 
-#print(catching_insider(feed1))
-#print(catching_insider(feed2))
+print(catching_insider(feed1))
+print(catching_insider(feed2))
